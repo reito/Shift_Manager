@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>俺の小遣い帳</title>
+    </head>
+
+    <body>
+    <h1>所持金<%= @wallet %>円</h1>
+
+    行を追加します<input type="button" value="行を追加" id="coladd" onclick="coladd()">
+        
+<table id="table" border="1">
+    <tr>
+        <td>
+            商品
+        </td>
+        <td>
+            値段
+        </td>
+    </tr>
+</table>
+    <h1>収入リスト</h1>
+    <button><%= link_to "収入を追加する",'incomes/new'%></button>
+    <h1>欲しいものリスト</h1>
+    <button><%= link_to "欲しいものを追加する", 'wishes/new' %></button>
+    <div class="wishes">
+        <% @wishes.each do |wish| %>
+            <li><%= wish.name %></li>
+            <li><%= wish.price %></li>
+        <% end %>
+    </div>
+    <h1>貸与金リスト</h1>
+    <button><%= link_to "貸与金リストを追加する", 'loans/new' %></button>
+<script>
+    function coladd() {
+        var table = document.getElementById("table");
+        // 行を行末に追加
+        var row = table.insertRow(-1);
+        //td分追加
+        var cell1 = row.insertCell(-1);
+        var cell2 = row.insertCell(-1);
+        // セルの内容入力
+        cell1.innerHTML = '<input>';
+        cell2.innerHTML = 'この行を削除しますか？<input type="button" value=削除" id="coladd" onclick="coldel(this)">';
+    }
+    function coldel(obj) {
+        // 削除ボタンを押下された行を取得
+        tr = obj.parentNode.parentNode;
+        // trのインデックスを取得して行を削除する
+        tr.parentNode.deleteRow(tr.sectionRowIndex);
+    }
+</script>
+    </body>
+
+</html>
