@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
 
     def index
-        @wishes = Wish.all
-        @wallet = 0
-        @wallet += params[:income_receipt].to_i
+       @wallet = Income.sum(:receipt) - Wish.where(purchased: true).sum(:price) + Loan.where(repaid: true).sum(:amount)
+       @wishes = Wish.all
+       @loans = Loan.all
     end
 
 

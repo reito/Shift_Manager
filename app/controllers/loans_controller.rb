@@ -13,6 +13,18 @@ class LoansController < ApplicationController
         end
     end
 
+    def destroy
+        Loan.find(params[:id]).destroy
+        flash[:success] = "リストを削除しました"
+        redirect_to root_url
+    end
+
+    def update
+        Loan.find(params[:id]).update_attribute(:repaid, true)
+        flash[:success] = "返済されました!"
+        redirect_to root_url
+    end
+
     private
 
         def loan_params

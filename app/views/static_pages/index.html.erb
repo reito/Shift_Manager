@@ -2,35 +2,54 @@
 <html>
     <head>
         <title>俺の小遣い帳</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     </head>
 
     <body>
     <h1>所持金<%= @wallet %>円</h1>
 
+    <!--
     行を追加します<input type="button" value="行を追加" id="coladd" onclick="coladd()">
         
-<table id="table" border="1">
-    <tr>
-        <td>
-            商品
-        </td>
-        <td>
-            値段
-        </td>
-    </tr>
-</table>
-    <h1>収入リスト</h1>
+    <table id="table" border="1">
+        <tr>
+            <td>
+                商品
+            </td>
+            <td>
+                値段
+            </td>
+        </tr>
+    </table> 
+    -->
+    <h1>収入リスト<i class="fas fa-money-bill"></i></i></h1>
     <button><%= link_to "収入を追加する",'incomes/new'%></button>
-    <h1>欲しいものリスト</h1>
+    <h1>欲しいものリスト<i class="fas fa-meteor"></i></h1>
     <button><%= link_to "欲しいものを追加する", 'wishes/new' %></button>
     <div class="wishes">
         <% @wishes.each do |wish| %>
+            <% if wish.purchased == false %>
             <li><%= wish.name %></li>
             <li><%= wish.price %></li>
+            <li><%= link_to "買った!", wish_path(wish), method: :put %></li>
+            <li><%= link_to "削除する", wish,  method: :delete,
+                                        date: { confirm: "本当によろしいですか?"} %></li>
+            <% end %>
         <% end %>
     </div>
-    <h1>貸与金リスト</h1>
+    <h1>貸与金リスト<i class="fas fa-skull-crossbones"></i></h1>
     <button><%= link_to "貸与金リストを追加する", 'loans/new' %></button>
+    <div class="loans">
+        <% @loans.each do |loan| %>
+            <% if loan.repaid == false %>
+            <li><%= loan.name %></li>
+            <li><%= loan.amount %></li>
+            <li><%= link_to "返してもらった!", loan_path(loan), method: :put %></li>
+            <li><%= link_to "削除する", loan,  method: :delete,
+                                        date: { confirm: "本当によろしいですか?"} %></li>
+            <% end %>
+        <% end %>
+    </div>
 <script>
     function coladd() {
         var table = document.getElementById("table");
@@ -51,5 +70,4 @@
     }
 </script>
     </body>
-
 </html>

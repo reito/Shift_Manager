@@ -15,7 +15,13 @@ class WishesController < ApplicationController
 
     def destroy
         Wish.find(params[:id]).destroy
-        flash[:success] = "欲しいものが買えました"
+        flash[:success] = "欲しいものリストから削除しました"
+        redirect_to root_url
+    end
+
+    def update
+        Wish.find(params[:id]).update_attribute(:purchased, true)
+        flash[:success] ="欲しいものが買えました!"
         redirect_to root_url
     end
 

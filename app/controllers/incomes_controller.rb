@@ -15,6 +15,12 @@ class IncomesController < ApplicationController
         end
     end
 
+    def destroy
+        Income.find(params[:id]).destroy
+        flash[:success] = "収入データを削除しました"
+        redirect_to root_url
+    end
+
     private
 
         def income_params

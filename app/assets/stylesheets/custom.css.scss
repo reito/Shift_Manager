@@ -1,15 +1,39 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+* {
+    text-align: center;
+}
+
+body {
+    background-image: image-url("mig.jpeg");
+    background-size: 50% auto;
+}
+
 .wishes {
     display: flex;
-    width: 500px;
+    width: 600px;
     display: flex;
     flex-wrap: wrap;
     li {
         border: 1px solid black;
         list-style: none;
-        width: 50%;
+        width: 25%;
+        box-sizing: border-box;
+        
+    }
+}
+
+.loans {
+    display: flex;
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+        border: 1px solid black;
+        list-style: none;
+        width: 25%;
         box-sizing: border-box;
         
     }
