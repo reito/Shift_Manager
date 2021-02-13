@@ -21,9 +21,9 @@ class WishesController < ApplicationController
 
     def update
         Wish.find(params[:id]).update_attribute(:purchased, true)
-        flash[:success] ="欲しいものが買えました!"
+        flash[:success] = "欲しいものが買えました！"
         redirect_to root_url
-    end
+    end 
 
     private
 
