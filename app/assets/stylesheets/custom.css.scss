@@ -5,11 +5,17 @@
 * {
     text-align: center;
     margin: 0 auto;
+    color: white;
+    // border-color: white;
+}
+
+h1 {
+    color: white;
 }
 
 body {
-    // background-image: image-url("mig.jpeg");
-    // background-size: 50% auto;
+    background-image: image-url("ros.jpeg");
+    background-size: 50% auto;
 }
 
 .wishes {
@@ -18,11 +24,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     li {
-        border: 1px solid black;
+        border: 1px solid white;
         list-style: none;
         width: 25%;
         box-sizing: border-box;
-        
+        background-color: black;
     }
 }
 
@@ -32,10 +38,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     li {
-        border: 1px solid black;
+        border: 1px solid white;
         list-style: none;
         width: 25%;
         box-sizing: border-box;
-        
+        background-color: black;
     }
 }
